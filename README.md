@@ -1,6 +1,6 @@
 # JupyterTracerViz
 
-Visualize trace.json in Jupyter Notebook cell.
+Visualize multiple trace.json in Jupyter Notebook cell.
 
 ## Installation
 
