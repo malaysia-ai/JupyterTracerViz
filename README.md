@@ -38,4 +38,12 @@ prof.export_chrome_trace("trace.json")
 jupytertracerviz.visualize("trace.json", height = "800")
 ```
 
-<img width="50%" src="pic1.png">
+<img width="80%" src="pic1.png">
+
+After that you can import to HTML if you want,
+
+```bash
+jupyter nbconvert --to html notebook.ipynb
+```
+
+<img width="80%" src="website.png">
