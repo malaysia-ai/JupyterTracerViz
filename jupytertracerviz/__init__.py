@@ -6,8 +6,12 @@ import viztracer
 import os
 import json
 
-def visualize(file, width = '100%', height = '1024'):
-    data = report_builder.get_json(file)
+def visualize(files, width = '100%', height = '1024'):
+    if isinstance(files, str):
+        files = [files]
+    data = []
+    for f in files:
+        data.append(report_builder.get_json(f))
     builder = report_builder.ReportBuilder(data)
     builder.prepare_json(file_info=True, display_time_unit="ns")
     sub = {}
