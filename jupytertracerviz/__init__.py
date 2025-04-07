@@ -5,6 +5,7 @@ from string import Template
 import viztracer
 import os
 import json
+from .template import base
 
 def visualize(files, width = '100%', height = '1024'):
     if isinstance(files, str):
@@ -20,7 +21,7 @@ def visualize(files, width = '100%', height = '1024'):
     with open(os.path.join(os.path.dirname(viztracer.__file__), "html/trace_viewer_full.html"), encoding="utf-8") as f:
         sub["trace_viewer_full"] = f.read()
     sub["json_data"] = json.dumps(builder.combined_json).replace("</script>", "<\\/script>")
-    html = Template(tmpl).substitute(sub)
+    html = Template(base).substitute(sub)
     iframe = (
         '<div style="width:{width};height:{height}px">'
         '<div style="position:relative;width:100%;height:0;padding-bottom:{ratio};">'  # noqa
