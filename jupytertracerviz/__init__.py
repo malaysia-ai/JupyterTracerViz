@@ -6,6 +6,7 @@ import viztracer
 import os
 import json
 from .template import base
+from .multigpus_repl import multigpus, init_multigpus_repl
 
 def visualize(files, width = '100%', height = '1024'):
     if isinstance(files, str):
