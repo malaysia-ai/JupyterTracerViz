@@ -132,6 +132,8 @@ Full example at [single-gpu.ipynb](single-gpu.ipynb).
 
 Debugging Multi-GPUs processing is hard to debug because it required to run as multiprocessing and not possible to REPL, but now you can!
 
+First you must initialize using `init_multigpus_repl`,
+
 ```python
 from jupytertracerviz import init_multigpus_repl, multigpus
 init_multigpus_repl()
