@@ -10,6 +10,42 @@ pip3 install git+https://github.com/huseinzol05/JupyterTracerViz
 
 ## How to visualize profiling
 
+You can use `visualize`,
+
+```python
+def visualize(
+    files: Union[str, List[str]], 
+    width: str = '100%', 
+    height: str = '1024',
+):
+    """
+    Visualizes one or more VizTracer trace files in an embedded HTML iframe within a Jupyter Notebook.
+
+    Parameters:
+    ----------
+    files : Union[str, List[str]]
+        Path(s) to one or more `.json` VizTracer trace files to visualize. Can be a single file path or a list of file paths.
+
+    width : str, optional
+        Width of the embedded viewer (default: "100%"). Accepts any valid CSS width (e.g., "800px", "100%").
+
+    height : str, optional
+        Height of the embedded viewer in pixels (default: "1024").
+
+    Returns:
+    -------
+    IPython.display.HTML
+        An HTML iframe displaying the interactive VizTracer trace viewer within the notebook.
+
+    Notes:
+    -----
+    - This function uses VizTracer's built-in HTML viewer templates to embed a rich profiling UI directly in the notebook.
+    - Automatically handles escaping of embedded script tags to avoid HTML rendering issues.
+    - Combines multiple trace files into a single view if a list is provided.
+    - Requires VizTracer and IPython to be installed.
+    """
+```
+
 ### Single GPU
 
 I take example profiling from https://pytorch.org/docs/stable/torch.compiler_profiling_torch_compile.html,
@@ -135,6 +171,36 @@ Debugging Multi-GPUs processing is hard to debug because it required to run as m
 First you must initialize using `init_multigpus_repl`,
 
 ```python
+def init_multigpus_repl(
+    num_gpus: int = None, 
+    master_addr: str = "localhost", 
+    master_port: str = "12355",
+    print_on_rank: int = -1,
+):
+    """
+    Initializes a multi-GPU interactive REPL environment, typically within a Jupyter notebook.
+    
+    Parameters:
+    ----------
+    num_gpus : int, optional
+        Number of GPUs to initialize across. If None, uses all available GPUs.
+
+    master_addr : str, optional
+        The master node's address used for setting up the process group (default: "localhost").
+        Required in multi-node setups.
+
+    master_port : str, optional
+        Port used for initializing the torch.distributed process group (default: "12355").
+        Must be free on the master node.
+
+    print_on_rank : int, optional
+        Specifies which rank should handle printing to stdout.
+        - If set to -1, all ranks print.
+        - If set to a specific rank (e.g., 0), only that rank will output to stdout.
+    """
+```
+
+```python
 from jupytertracerviz import init_multigpus_repl, multigpus
 init_multigpus_repl()
 
@@ -175,3 +241,7 @@ print(model.w1.weight)
 <img width="80%" src="pic3.png">
 
 Full example at [multigpus-repl.ipynb](multigpus-repl.ipynb).
+
+For more complex example, [deepspeed-zero3.ipynb](deepspeed-zero3.ipynb),
+
+<img width="80%" src="pic4.png">

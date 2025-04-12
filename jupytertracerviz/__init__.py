@@ -7,8 +7,40 @@ import os
 import json
 from .template import base
 from .multigpus_repl import multigpus, init_multigpus_repl
+from typing import Union, List
 
-def visualize(files, width = '100%', height = '1024'):
+def visualize(
+    files: Union[str, List[str]], 
+    width: str = '100%', 
+    height: str = '1024',
+):
+    """
+    Visualizes one or more VizTracer trace files in an embedded HTML iframe within a Jupyter Notebook.
+
+    Parameters:
+    ----------
+    files : Union[str, List[str]]
+        Path(s) to one or more `.json` VizTracer trace files to visualize. Can be a single file path or a list of file paths.
+
+    width : str, optional
+        Width of the embedded viewer (default: "100%"). Accepts any valid CSS width (e.g., "800px", "100%").
+
+    height : str, optional
+        Height of the embedded viewer in pixels (default: "1024").
+
+    Returns:
+    -------
+    IPython.display.HTML
+        An HTML iframe displaying the interactive VizTracer trace viewer within the notebook.
+
+    Notes:
+    -----
+    - This function uses VizTracer's built-in HTML viewer templates to embed a rich profiling UI directly in the notebook.
+    - Automatically handles escaping of embedded script tags to avoid HTML rendering issues.
+    - Combines multiple trace files into a single view if a list is provided.
+    - Requires VizTracer and IPython to be installed.
+    """
+
     if isinstance(files, str):
         files = [files]
     data = []
