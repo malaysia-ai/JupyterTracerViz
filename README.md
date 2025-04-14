@@ -242,6 +242,10 @@ print(model.w1.weight)
 
 Full example at [multigpus-repl.ipynb](multigpus-repl.ipynb).
 
-For more complex example, [deepspeed-zero3.ipynb](deepspeed-zero3.ipynb),
+For more complex example,
+
+1. DeepSpeed ZeRO 3, [deepspeed-zero3.ipynb](deepspeed-zero3.ipynb),
 
 <img width="80%" src="pic4.png">
+
+2. FSDP2 Fully Shard, [fsdp2.ipynb](fsdp2.ipynb)
