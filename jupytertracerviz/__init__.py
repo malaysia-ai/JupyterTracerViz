@@ -13,6 +13,20 @@ def visualize(
     files: Union[str, List[str]], 
     width: str = '100%', 
     height: str = '1024',
+    remove_spans: List[str] = [
+        'ipykernel', 
+        'IPython', 
+        'jupytertracerviz', 
+        'multiprocessing', 
+        'asyncio', 
+        'tornado',
+        'torch/profiler',
+        'traitlets/',
+        'runpy.py',
+        '<string>',
+        'Unrecognized',
+    ],
+    merge_overlap: bool = True,
 ):
     """
     Visualizes one or more VizTracer trace files in an embedded HTML iframe within a Jupyter Notebook.
@@ -44,8 +58,18 @@ def visualize(
     if isinstance(files, str):
         files = [files]
     data = []
+    exists = set()
     for f in files:
-        data.append(report_builder.get_json(f))
+        d = report_builder.get_json(f)
+        for i in reversed(range(len(d['traceEvents']))):
+            if any([s in d['traceEvents'][i]['name'] for s in remove_spans]):
+                d['traceEvents'].pop(i)
+            key = d['traceEvents'][i]['name'] + str(d['traceEvents'][i]['pid']) + str(i)
+            if key in exists and merge_overlap:
+                d['traceEvents'].pop(i)
+                continue
+            exists.add(key)
+        data.append(d)
     builder = report_builder.ReportBuilder(data)
     builder.prepare_json(file_info=True, display_time_unit="ns")
     sub = {}
