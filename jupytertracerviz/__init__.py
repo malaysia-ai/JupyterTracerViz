@@ -25,6 +25,7 @@ def visualize(
         'runpy.py',
         '<string>',
         'Unrecognized',
+        'threading.py',
     ],
     merge_overlap: bool = True,
 ):
