@@ -162,7 +162,7 @@ jupytertracerviz.visualize(glob('trace_*.json'), height = "800")
 
 <img width="80%" src="pic2.png">
 
-Full example at [single-gpu.ipynb](single-gpu.ipynb).
+Full example at [multiple-gpus.ipynb](multiple-gpus.ipynb).
 
 ## How to Multi-GPUs REPL
 
