@@ -76,7 +76,7 @@ prof.export_chrome_trace("trace.json")
 jupytertracerviz.visualize("trace.json", height = "800")
 ```
 
-<img width="80%" src="pic1.png">
+<img width="80%" src="pictures/pic1.png">
 
 After that you can import to HTML if you want,
 
@@ -84,7 +84,7 @@ After that you can import to HTML if you want,
 jupyter nbconvert --to html single-gpu.ipynb
 ```
 
-<img width="80%" src="website.png">
+<img width="80%" src="pictures/website.png">
 
 Full example at [single-gpu.ipynb](single-gpu.ipynb).
 
@@ -160,7 +160,7 @@ notebook_launcher(training_loop, num_processes = 3, use_port = '29501')
 jupytertracerviz.visualize(glob('trace_*.json'), height = "800")
 ```
 
-<img width="80%" src="pic2.png">
+<img width="80%" src="pictures/pic2.png">
 
 Full example at [multiple-gpus.ipynb](multiple-gpus.ipynb).
 
@@ -238,14 +238,22 @@ model = parallelize_module(model, device_mesh, linears)
 print(model.w1.weight)
 ```
 
-<img width="80%" src="pic3.png">
+<img width="80%" src="pictures/pic3.png">
 
 Full example at [multigpus-repl.ipynb](multigpus-repl.ipynb).
 
-For more complex example,
+### More complex examples
 
 1. DeepSpeed ZeRO 3, [deepspeed-zero3.ipynb](deepspeed-zero3.ipynb),
 
-<img width="80%" src="pic4.png">
+<img width="80%" src="pictures/pic4.png">
 
-2. FSDP2 Fully Shard, [fsdp2.ipynb](fsdp2.ipynb)
+2. FSDP2 Fully Shard, [fsdp2.ipynb](fsdp2.ipynb),
+
+<img width="80%" src="pictures/pic5.png">
+
+3. Native PyTorch Context Parallelism, [native-pt-cp.ipynb](native-pt-cp.ipynb),
+
+**Required PyTorch 2.7**.
+
+<img width="80%" src="pictures/pic6.png">
