@@ -2,3 +2,5 @@
 *__pycache__
 *.ipynb_checkpoints
 *Untitled*.ipynb
+examples/Qwen3-0.6B-Base-dummy
+examples/*json
