@@ -10,6 +10,6 @@ setuptools.setup(
     python_requires='>=3.8',
     description='Visualize multiple trace.json in Jupyter Notebook cell.',
     author='huseinzol05',
-    url='https://github.com/huseinzol05/JupyterTracerViz',
+    url='https://github.com/malaysia-ai/JupyterTracerViz',
     include_package_data=True
 )

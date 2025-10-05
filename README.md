@@ -5,7 +5,7 @@ Visualize multiple trace.json in Jupyter Notebook cell, also include multi-GPUs 
 ## Installation
 
 ```
-pip3 install git+https://github.com/huseinzol05/JupyterTracerViz
+pip3 install git+https://github.com/malaysia-ai/JupyterTracerViz
 ```
 
 ## How to visualize profiling
